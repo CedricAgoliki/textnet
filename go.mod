@@ -1,6 +1,8 @@
 module github.com/CedricAgoliki/textnet
 
-go 1.20
+go 1.21
+
+toolchain go1.21.3
 
 require github.com/pterm/pterm v0.12.69
 

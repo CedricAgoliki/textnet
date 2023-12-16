@@ -2,13 +2,18 @@ package main
 
 import (
 	"github.com/pterm/pterm"
-	"github.com/pterm/pterm/putils"
 )
 
 func main() {
-	header := pterm.DefaultHeader.WithBackgroundStyle(pterm.NewStyle(pterm.BgRed))
+	area, _ := pterm.DefaultArea.WithFullscreen().Start()
+	contentBox := pterm.DefaultBox.WithTitle("default page").Sprint("content")
+	addressBox := pterm.DefaultBox.Sprint("address")
 
-	pterm.DefaultCenter.Println(header.Sprint("textnet"))
+	panels := [][]pterm.Panel{
+		{{Data: contentBox}},
+		{{Data: addressBox}},
+	}
 
-	_ = pterm.DefaultBigText.WithLetters(putils.LettersFromString("textnet")).Render()
+	pterm.DefaultPanel.WithPanels(panels).Render()
+	area.Stop()
 }
