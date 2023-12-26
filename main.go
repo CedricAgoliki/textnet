@@ -1,19 +1,12 @@
 package main
 
 import (
-	"github.com/pterm/pterm"
+	"github.com/rivo/tview"
 )
 
 func main() {
-	area, _ := pterm.DefaultArea.WithFullscreen().Start()
-	contentBox := pterm.DefaultBox.WithTitle("default page").Sprint("content")
-	addressBox := pterm.DefaultBox.Sprint("address")
-
-	panels := [][]pterm.Panel{
-		{{Data: contentBox}},
-		{{Data: addressBox}},
+	box := tview.NewBox().SetBorder(true).SetTitle("Hello, world!")
+	if err := tview.NewApplication().SetRoot(box, true).Run(); err != nil {
+		panic(err)
 	}
-
-	pterm.DefaultPanel.WithPanels(panels).Render()
-	area.Stop()
 }
