@@ -18,7 +18,7 @@ func main() {
 		AddItem(contentBox, 0, 1, false).
 		AddItem(inputFlex, 1, 0, true)
 
-	if err := tview.NewApplication().SetRoot(flex, true).Run(); err != nil {
+	if err := tview.NewApplication().SetRoot(flex, true).SetFocus(addressInput).Run(); err != nil {
 		panic(err)
 	}
 }
